@@ -23,20 +23,7 @@ public class ServicoEstatistica {
     }
 
     public EstatisticasDTO calculaEstatisticas(int distancia){
-        // Seleciona os eventos da distancia informada
-        List<Evento> eventos = 
-            eventoRep.todos()
-                .stream()
-                .filter(e->e.getDistancia() == distancia)
-                .collect(Collectors.toList());
-        // Obtém um stream com os valores ordenados
-        List<Double> valores = eventos
-            .stream()
-            .map(e-> e.getHoras()*60*60 + e.getMinutos()*60.0 + e.getSegundos())
-            .sorted()
-            .collect(Collectors.toList());
-            
-        return calculoEstatisticaStrategy.calculaEstatisticas(valores);    
+        return calculoEstatisticaStrategy.calculaEstatisticas(eventoRep, distancia);    
     }
 
     public PerformanceDTO calculaAumentoPerformance(int distancia,int ano){

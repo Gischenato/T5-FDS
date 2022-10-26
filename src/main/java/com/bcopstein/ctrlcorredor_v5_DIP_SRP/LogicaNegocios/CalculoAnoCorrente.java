@@ -3,15 +3,13 @@ package com.bcopstein.ctrlcorredor_v5_DIP_SRP.LogicaNegocios;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Component;
+public class CalculoAnoCorrente implements ICalculoEstatististica {
 
-@Component
-public class CalculoOriginal implements ICalculoEstatististica {
     @Override
     public EstatisticasDTO calculaEstatisticas(IEventoRepository eventoRep, double distancia) {
         List<Evento> eventos = eventoRep.todos()
                 .stream()
-                .filter(e -> e.getDistancia() == distancia)
+                .filter(e -> (e.getDistancia() == distancia && e.getAno() == 2019))
                 .collect(Collectors.toList());
         // Obtém um stream com os valores ordenados
 
@@ -46,4 +44,5 @@ public class CalculoOriginal implements ICalculoEstatististica {
         }
         return new EstatisticasDTO(media, mediana, desvioPadrao);
     }
+
 }
