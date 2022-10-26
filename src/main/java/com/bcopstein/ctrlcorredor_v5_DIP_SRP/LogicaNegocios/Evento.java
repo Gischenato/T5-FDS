@@ -13,8 +13,9 @@ public class Evento {
     private int horas;
     private int minutos;
     private int segundos;
+    private String cpf;
     
-    public Evento(int id,String nome, int dia, int mes, int ano, int distancia, int horas, int minutos, int segundos) {
+    public Evento(int id,String nome, int dia, int mes, int ano, int distancia, int horas, int minutos, int segundos, String cpf) {
         this.id = id;
         this.nome = nome;
         this.dia = dia;
@@ -24,10 +25,15 @@ public class Evento {
         this.horas = horas;
         this.minutos = minutos;
         this.segundos = segundos;
+        this.cpf = cpf;
     }
 
     public int getId() {
         return id;
+    }
+
+    public String getCpf() {
+        return cpf;
     }
 
     public String getNome() {

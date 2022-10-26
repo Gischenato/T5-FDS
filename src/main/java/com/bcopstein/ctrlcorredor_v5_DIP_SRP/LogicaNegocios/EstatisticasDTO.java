@@ -4,7 +4,7 @@ public class EstatisticasDTO {
     private double media;
     private double mediana;
     private double desvioPadrao;
-
+    
     public EstatisticasDTO(double media, double mediana, double desvioPadrao) {
         this.media = media;
         this.mediana = mediana;

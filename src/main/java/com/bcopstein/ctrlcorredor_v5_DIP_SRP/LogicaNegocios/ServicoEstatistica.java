@@ -22,13 +22,13 @@ public class ServicoEstatistica {
         this.calculoEstatisticaStrategy = calculoEstatisticaStrategy;
     }
 
-    public EstatisticasDTO calculaEstatisticas(int distancia){
-        return calculoEstatisticaStrategy.calculaEstatisticas(eventoRep, distancia);    
+    public EstatisticasDTO calculaEstatisticas(int distancia, String cpf){
+        return calculoEstatisticaStrategy.calculaEstatisticas(eventoRep, distancia, cpf);    
     }
 
-    public PerformanceDTO calculaAumentoPerformance(int distancia,int ano){
+    public PerformanceDTO calculaAumentoPerformance(int distancia,int ano, String cpf){
         List<Evento> eventos = eventoRep
-                        .todos()
+                        .todos(cpf)
                         .stream()
                         .filter(e->e.getAno() == ano)
                         .collect(Collectors.toList());

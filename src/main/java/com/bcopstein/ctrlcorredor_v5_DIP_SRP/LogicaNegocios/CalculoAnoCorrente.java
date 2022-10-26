@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class CalculoAnoCorrente implements ICalculoEstatististica {
 
     @Override
-    public EstatisticasDTO calculaEstatisticas(IEventoRepository eventoRep, double distancia) {
-        List<Evento> eventos = eventoRep.todos()
+    public EstatisticasDTO calculaEstatisticas(IEventoRepository eventoRep, double distancia, String cpf) {
+        List<Evento> eventos = eventoRep.todos(cpf)
                 .stream()
                 .filter(e -> (e.getDistancia() == distancia && e.getAno() == 2019))
                 .collect(Collectors.toList());

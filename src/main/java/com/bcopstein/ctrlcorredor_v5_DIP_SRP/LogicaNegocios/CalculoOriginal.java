@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CalculoOriginal implements ICalculoEstatististica {
     @Override
-    public EstatisticasDTO calculaEstatisticas(IEventoRepository eventoRep, double distancia) {
-        List<Evento> eventos = eventoRep.todos()
+    public EstatisticasDTO calculaEstatisticas(IEventoRepository eventoRep, double distancia, String cpf) {
+        List<Evento> eventos = eventoRep.todos(cpf)
                 .stream()
                 .filter(e -> e.getDistancia() == distancia)
                 .collect(Collectors.toList());

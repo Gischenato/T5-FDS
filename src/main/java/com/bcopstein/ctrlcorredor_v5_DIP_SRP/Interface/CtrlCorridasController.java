@@ -48,8 +48,8 @@ public class CtrlCorridasController {
 
     @GetMapping("/eventos")
     @CrossOrigin(origins = "*")
-    public List<Evento> consultaEventos() {
-        return servicoEvento.todos();
+    public List<Evento> consultaEventos(@RequestParam final String cpf) {
+        return servicoEvento.todos(cpf);
     }
 
     @PostMapping("/eventos") // adiciona evento no único corredor
@@ -61,14 +61,15 @@ public class CtrlCorridasController {
 
     @GetMapping("/estatisticas")
     @CrossOrigin(origins = "*")
-    public EstatisticasDTO estatisticas(@RequestParam final Integer distancia){
-        return servicoEstatistica.calculaEstatisticas(distancia);
+    public EstatisticasDTO estatisticas(@RequestParam final Integer distancia, @RequestParam final String cpf){
+        return servicoEstatistica.calculaEstatisticas(distancia, cpf);
     }
 
     @GetMapping("/aumentoPerformance")
     @CrossOrigin(origins = "*")
     public PerformanceDTO aumentoPerformance(@RequestParam final Integer distancia,
-                                            @RequestParam final Integer ano){
-        return servicoEstatistica.calculaAumentoPerformance(distancia, ano);
+                                            @RequestParam final Integer ano,
+                                            @RequestParam final String cpf){
+        return servicoEstatistica.calculaAumentoPerformance(distancia, ano, cpf);
     }
 }

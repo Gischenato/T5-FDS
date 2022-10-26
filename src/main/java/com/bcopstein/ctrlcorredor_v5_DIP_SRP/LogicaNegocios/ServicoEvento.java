@@ -14,8 +14,8 @@ public class ServicoEvento {
         this.eventoRep = eventoRep;
     } 
 
-    public List<Evento> todos(){
-        return eventoRep.todos();
+    public List<Evento> todos(String cpf){
+        return eventoRep.todos(cpf);
     }
 
     public void cadastra(Evento evento){
