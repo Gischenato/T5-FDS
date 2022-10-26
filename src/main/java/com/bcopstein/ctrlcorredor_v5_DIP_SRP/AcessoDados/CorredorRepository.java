@@ -21,7 +21,9 @@ public class CorredorRepository implements ICorredorRepository {
         this.jdbcTemplate.execute("CREATE TABLE corredores("
                 + "cpf VARCHAR(255), nome VARCHAR(255), genero VARCHAR(255), diaDn int, mesDn int, anoDn int, PRIMARY KEY(cpf))");
 
-        cadastra(new Corredor("10001287","Luiz",22,5,1987,"masculino"));    }
+        cadastra(new Corredor("10001287","Luiz",22,5,1987,"masculino"));
+        cadastra(new Corredor("85632532","Gabriel",7,11,2002,"masculino"));
+    }
     
     public List<Corredor> todos() {
         List<Corredor> resp = this.jdbcTemplate.query("SELECT * from corredores",
